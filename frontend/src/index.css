@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #64748b;
+  --accent: #f59e0b;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Radii */
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+select, input, textarea {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+select:focus, input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.fully-booked-day {
+  background-color: #fee2e2 !important;
+  color: #ef4444 !important;
+  border-radius: 50% !important;
+}
+
+.partially-booked-day {
+  background-color: #ffedd5 !important;
+  color: #c2410c !important;
+  border-radius: 50% !important;
+}
+
+/* Tooltip Styles */
+.booking-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0f172a;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  border-radius: 12px;
+  z-index: 100;
+  width: 200px;
+  font-size: 11px;
+  line-height: 1.4;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  pointer-events: none;
+}
+
+.booking-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #0f172a transparent transparent transparent;
+}
+
+.has-booking:hover .booking-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* Ensure the calendar container allows overflow for tooltips */
+.react-datepicker__month-container {
+  overflow: visible !important;
+}
+
+.react-datepicker {
+  overflow: visible !important;
+}
+
+/* Custom Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modern Input Fixes */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+input[type="date"] {
+  position: relative;
+}
+
+/* Ensure icons in inputs don't move and have enough space */
+.relative svg {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific padding for icon inputs */
+.pl-12 { padding-left: 3.5rem !important; }
+.pl-14 { padding-left: 4rem !important; }
+.pl-16 { padding-left: 4.5rem !important; }
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
